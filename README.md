@@ -1,5 +1,16 @@
 # React Monorepo Template
 
+## Node and NPM version
+
+TL;DR
+
+- Node version: 18.18.2
+- npm version: 9.8.1
+
+For now, **API breaks with Node > 18.18**. Node 18.18.2 is required.
+
+Also, Node 18.18.2 comes with npm 9.8.1, so the project should work properly with it. In any case, npm workspaces were added in npm 7.0.0, so you should have at least that version (9.8.1 strongly recommended).
+
 ## Create user for deployment (AWS)
 
 1. Go to IAM service
