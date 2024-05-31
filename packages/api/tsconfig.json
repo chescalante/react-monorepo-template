@@ -7,10 +7,12 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "./dist"
-  },
-  "ts-node": {
-    "esm": true
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "plugins": [{ "transform": "typescript-transform-paths" }]
   },
   "include": ["src/**/*"]
 }

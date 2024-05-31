@@ -1,5 +1,5 @@
+import envParsed from "@/envParsed.js";
 import { Request, Response, NextFunction } from "express";
-import envParsed from "./envParsed.js";
 
 export const STATUS_CODES = {
   NOT_FOUND: 404,
@@ -19,24 +19,11 @@ function notFound(req: Request, res: Response, next: NextFunction) {
 function errorHandler(err: unknown, req: Request, res: Response) {
   console.error(err);
 
-  const statusCode =
-    res.statusCode !== 200
-      ? res.statusCode
-      : STATUS_CODES.INTERNAL_SERVER_ERROR;
+  const statusCode = res.statusCode !== 200 ? res.statusCode : STATUS_CODES.INTERNAL_SERVER_ERROR;
 
-  const message =
-    err &&
-    (err instanceof Error || (typeof err === "object" && "message" in err))
-      ? err.message
-      : "Internal Server Error";
+  const message = err && (err instanceof Error || (typeof err === "object" && "message" in err)) ? err.message : "Internal Server Error";
 
-  const stack =
-    envParsed().NODE_ENV === "development" &&
-    err &&
-    typeof err === "object" &&
-    "stack" in err
-      ? err.stack
-      : undefined;
+  const stack = envParsed().NODE_ENV === "development" && err && typeof err === "object" && "stack" in err ? err.stack : undefined;
 
   res.status(statusCode);
   res.json({
