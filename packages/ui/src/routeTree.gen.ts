@@ -11,18 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from "./routes/__root";
-import { Route as AboutImport } from "./routes/about";
 import { Route as IndexImport } from "./routes/index";
+import { Route as AboutIndexImport } from "./routes/about/index";
 
 // Create/Update Routes
 
-const AboutRoute = AboutImport.update({
-  path: "/about",
+const IndexRoute = IndexImport.update({
+  path: "/",
   getParentRoute: () => rootRoute,
 } as any);
 
-const IndexRoute = IndexImport.update({
-  path: "/",
+const AboutIndexRoute = AboutIndexImport.update({
+  path: "/about/",
   getParentRoute: () => rootRoute,
 } as any);
 
@@ -37,11 +37,11 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof IndexImport;
       parentRoute: typeof rootRoute;
     };
-    "/about": {
-      id: "/about";
+    "/about/": {
+      id: "/about/";
       path: "/about";
       fullPath: "/about";
-      preLoaderRoute: typeof AboutImport;
+      preLoaderRoute: typeof AboutIndexImport;
       parentRoute: typeof rootRoute;
     };
   }
@@ -49,7 +49,7 @@ declare module "@tanstack/react-router" {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexRoute, AboutRoute });
+export const routeTree = rootRoute.addChildren({ IndexRoute, AboutIndexRoute });
 
 /* prettier-ignore-end */
 
@@ -60,14 +60,14 @@ export const routeTree = rootRoute.addChildren({ IndexRoute, AboutRoute });
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/about/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/about": {
-      "filePath": "about.tsx"
+    "/about/": {
+      "filePath": "about/index.tsx"
     }
   }
 }

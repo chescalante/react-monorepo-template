@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/")({
-  component: Index,
+export const Route = createFileRoute("/about/")({
+  component: About,
 });
 
-function Index() {
+function About() {
   return (
     <div className="flex flex-1 items-center justify-center">
-      <h3>Home Page</h3>
+      <h3>About Page</h3>
     </div>
   );
 }
