@@ -49,6 +49,7 @@ resources:
               Resource: arn:aws:s3:::${self:custom.bucketName}/*
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
+      DependsOn: ReactAppBucket
       Properties:
         DistributionConfig:
           Origins:
