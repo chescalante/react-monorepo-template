@@ -22,6 +22,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.6",
     "serverless": "3.38.0",
+    "serverless-cloudfront-invalidate": "1.12.2",
     "serverless-plugin-common-excludes": "4.0.0",
     "serverless-plugin-include-dependencies": "6.0.0",
     "serverless-s3-sync": "3.3.0"

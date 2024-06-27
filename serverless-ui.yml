@@ -5,11 +5,16 @@ provider:
   runtime: nodejs18.x
 plugins:
   - serverless-s3-sync
+  - serverless-cloudfront-invalidate
 custom:
   bucketName: react-monorepo-template-ui
   s3Sync:
     - bucketName: ${self:custom.bucketName}
       localDir: packages/ui/dist
+  cloudfrontInvalidate:
+    - distributionIdKey:  "CloudFrontDistributionId"
+      items:
+        - "/*"
 
 resources:
   Resources:
@@ -44,10 +49,11 @@ resources:
               Resource: arn:aws:s3:::${self:custom.bucketName}/*
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
+      DependsOn: ReactAppBucket
       Properties:
         DistributionConfig:
           Origins:
-            - DomainName: ${self:custom.bucketName}.s3.amazonaws.com
+            - DomainName: ${self:custom.bucketName}.s3.${self:provider.region}.amazonaws.com
               Id: ReactApp
               CustomOriginConfig:
                 HTTPPort: 80
@@ -76,3 +82,7 @@ resources:
             ViewerProtocolPolicy: redirect-to-https
           ViewerCertificate:
             CloudFrontDefaultCertificate: true
+  Outputs:
+    CloudFrontDistributionId:
+      Description: "CloudFront Distribution Id"
+      Value: !Ref CloudFrontDistribution
