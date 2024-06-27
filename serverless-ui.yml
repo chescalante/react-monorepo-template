@@ -52,7 +52,7 @@ resources:
       Properties:
         DistributionConfig:
           Origins:
-            - DomainName: ${self:custom.bucketName}.s3.amazonaws.com
+            - DomainName: ${self:custom.bucketName}.s3.${self:provider.region}.amazonaws.com
               Id: ReactApp
               CustomOriginConfig:
                 HTTPPort: 80
