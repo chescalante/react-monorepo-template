@@ -34,3 +34,18 @@ Execute the following command in your terminal:
 ```shell
 npx serverless config credentials --provider aws --key <your aws access key> --secret <your aws secret access key>
 ```
+
+## Useful information if you fork this monorepo
+
+### Package lock is git ignored
+Intended in order to avoid merge conflicts on this repo
+
+**Don't forget to remove it from git ignore!**
+Package versions should always be defined specifically (without the simbol ^)
+This ensures that even if the lock is deleted, same versions would be reinstalled.
+
+Having the lock inside your repo is useful for CI package caching and to avoid version diff on fresh install. 
+
+### Github workflow is deactivated
+We don't want to trigger the workflow here, but you probably want to.
+You should rename the .github/workflows-off folder to **.github/workflow**

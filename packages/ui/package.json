@@ -1,5 +1,5 @@
 {
-  "name": "@react-monorepo-template/ui",
+  "name": "ui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -20,13 +20,13 @@
     "@types/react": "18.2.66",
     "@types/react-dom": "18.2.22",
     "@vitejs/plugin-react-swc": "3.5.0",
-    "autoprefixer": "^10.4.19",
-    "daisyui": "^4.11.1",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
+    "autoprefixer": "10.4.19",
+    "daisyui": "4.11.1",
+    "postcss": "8.4.38",
+    "tailwindcss": "3.4.3",
     "typescript": "5.2.2",
     "vite": "5.2.0",
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "4.3.2"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.14.2"
